@@ -8,8 +8,8 @@ module OmniAuth
       option :name, 'caren'
 
       option :client_options, {
-        :site => "http://caren-provider.dev:3005",
-        :authorize_url => "/oauth/authorize"
+        :site => "http://localhost:4000",
+        :authorize_url => "/login/oauth/authorize"
       }
 
       option :authorize_options, [:scope, :display, :auth_type]
@@ -18,17 +18,25 @@ module OmniAuth
 
       info do
         {
-          :email => raw_info["email"]
+          :name => "#{person['first_name']} #{person['last_name']}",
+          :email => person["email"],
+          :mobile_phone => person["mobile_phone"],
+          :date_of_birth => person["date_of_birth"],
+          :photo => person["photo"]
         }
       end
 
       # Add the raw info to the data object
       extra do
-        skip_info? ? {} : { :raw_info => raw_info }
+        skip_info? ? {} : { :raw_info => person }
       end
 
       def raw_info
-        @raw_info ||= access_token.get('/api/v1/credentials.json').parsed
+        @raw_info ||= access_token.get('/api/v1/user.json').parsed
+      end
+
+      def person
+        raw_info["_embedded"]["person"]
       end
 
       # You can pass +display+, +scope+, or +auth_type+ params to the auth
