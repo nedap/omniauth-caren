@@ -18,11 +18,13 @@ module OmniAuth
 
       info do
         {
-          :name => "#{person['first_name']} #{person['last_name']}",
-          :email => person["email"],
-          :mobile_phone => person["mobile_phone"],
-          :date_of_birth => person["date_of_birth"],
-          :photo => person["photo"]
+          :first_name     => person["first_name"],
+          :last_name      => person["last_name"],
+          :email          => person["email"],
+          :mobile_phone   => person["mobile_phone"],
+          :date_of_birth  => person["date_of_birth"],
+          :photo          => person["photo"],
+          :locale         => person["locale"]
         }
       end
 
