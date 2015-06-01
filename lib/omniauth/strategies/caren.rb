@@ -57,6 +57,13 @@ module OmniAuth
           params[:scope] ||= DEFAULT_SCOPE
         end
       end
+
+      protected
+
+      def ssl?
+        true
+      end
+
     end
   end
 end
