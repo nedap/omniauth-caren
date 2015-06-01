@@ -8,7 +8,7 @@ module OmniAuth
       option :name, 'caren'
 
       option :client_options, {
-        :site => "http://localhost:4000",
+        :site => "https://www.carenzorgt.nl",
         :authorize_url => "/login/oauth/authorize"
       }
 
