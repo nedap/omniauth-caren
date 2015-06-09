@@ -58,12 +58,6 @@ module OmniAuth
         end
       end
 
-      protected
-
-      def ssl?
-        true
-      end
-
     end
   end
 end
