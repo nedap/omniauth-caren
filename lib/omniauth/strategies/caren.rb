@@ -24,7 +24,8 @@ module OmniAuth
           :mobile_phone   => person["mobile_phone"],
           :date_of_birth  => person["date_of_birth"],
           :photo          => person["photo"],
-          :locale         => person["locale"]
+          :locale         => person["locale"],
+          :caren_id       => person["id"]
         }
       end
 
