@@ -12,7 +12,7 @@ module OmniAuth
         :authorize_url => "/login/oauth/authorize"
       }
 
-      option :authorize_options, [:scope, :display, :auth_type]
+      option :authorize_options, [:scope, :display, :auth_type, :person_id]
 
       # Define the uid of the resource
       uid { person["id"] }
@@ -55,7 +55,7 @@ module OmniAuth
       # For example: /auth/caren?display=popup or /auth/caren?scope=basic
       def authorize_params
         super.tap do |params|
-          %w[display scope auth_type].each do |v|
+          %w[display scope auth_type person_id].each do |v|
             if request.params[v]
               params[v.to_sym] = request.params[v]
             end
